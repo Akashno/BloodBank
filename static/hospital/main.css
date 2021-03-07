@@ -1,7 +1,7 @@
 .nav-btn{
 font-size:13px;
 color:white;
-background-color: #78BBAB;
+background-color: #78BBAB !important;
 }
     .top-bar{
     background-color:var(--hospital-color);
