@@ -25,7 +25,7 @@ SECRET_KEY = '!l&8=9oggu4h1_i^p@k^_jpv!gj(+5lfbs%i^s99@%0=+n8e4s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['noakash-crm.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['bloodmbank.herokuapp.com','127.0.0.1']
 
 
 # Application definition
