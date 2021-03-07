@@ -1,0 +1,60 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'hospital/main.css' %}">
+
+
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-items-center text-light h4">
+            <a class="text-decoration-none text-reset btn nav-btn" href="{% url 'hospital' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+              <a href="{% url 'request_blood' %}" class=" m-1 nav-btn btn " >
+               Request for Blood
+            </a>
+             <a href="{% url 'donor_list_view' %}" class=" m-1 nav-btn btn ">
+               Donors List
+            </a>
+            <a href="{% url 'blood_requests_view' %}" class=" m-1 btn nav-btn">
+               View Blood Requests
+            </a>
+               <a href="{% url 'blood_stock' %}" class=" m-1 btn nav-btn  rounded-pill ">
+               Blood Stock
+            </a>
+            <a href="{% url 'hospital_profile' %}" class=" m-1 btn nav-btn ">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn nav-btn m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+{% for message in messages %}
+            <div class="alert alert-danger">
+                {{message}}
+            </div>
+            {% endfor %}
+{% if stock %}
+{% include 'hospital/!blood_stock.html' %}
+<div class="container d-flex justify-content-end">
+    <a href="{% url 'update_blood_stock' stock.id %}" class="btn btn-warning mt-2 mb-2 ">Update Stock</a>
+</div>
+{% else %}
+{% include 'hospital/!add_blood_stock.html' %}
+{{form.errors}}
+{% endif %}
+
+
+
+
+{% endblock content%}

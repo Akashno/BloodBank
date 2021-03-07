@@ -1,0 +1,58 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-items-center text-light h4">
+            <a class="text-decoration-none text-reset  btn btn-dark rounded-pill" href="{% url 'user' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+            <a href="{% url 'blood_requests' %}" class=" m-1 btn btn-secondary">
+                Blood Requests
+            </a>
+               <a href="{% url 'hospital_list' %}" class=" m-1 btn btn-secondary">
+                Hospitals List
+            </a>
+            <a href="{% url 'user_profile' %}" class=" m-1 btn btn-secondary ">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn btn-secondary m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col d-flex flex-column justify-content-between align-items-center">
+           <div class="mt-5">
+                <h5 class="text-center" style="color:var(--user-color)">
+                You can find the hospital lists on  <kbd class="bg-secondary">Hospital List</kbd> panel
+                </h5>
+                 <h6 class="text-center mt-4" style="color:var(--user-color)">
+                 Find your previous blood requests on <kbd class="bg-secondary">Profile</kbd> panel
+                </h6>
+           </div>
+            <img src="{% static 'user/image/blood.png' %}" alt="" width="300px" height="300px">
+        </div>
+        <div class="col">
+            <h4 class="text-center">Blood Request Form</h4>
+            <div class="container border rounded px-5 pt-4">
+                <h6 class="text-center" style="color:var(--user-alert-color)">
+                Please fill the following information to post your blood request. We will inform our donors and we hope the needy people recover soon.</h6>
+                {% include 'user/!blood_request_form.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}

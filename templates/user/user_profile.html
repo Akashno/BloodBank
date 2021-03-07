@@ -1,0 +1,102 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-users-center text-light h4">
+            <a class="text-decoration-none text-reset btn btn-secondary" href="{% url 'user' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+ <a href="{% url 'blood_requests' %}" class=" m-1 btn btn-secondary">
+                Blood Requests
+            </a>
+            <a href="{% url 'hospital_list' %}" class=" m-1 btn btn-secondary">
+                Hospitals List
+            </a> <a href="{% url 'user_profile' %}" class=" m-1 btn btn-dark rounded-pill text-light">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn btn-secondary m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--profile-->
+{% for message in messages %}
+    <div class="alert" style="background-color:var(--user-alert-color);">
+        {{message}}
+    </div>
+{% endfor %}
+<div class="container mt-5 alert alert-secondary">
+    <h5>First Name:  <p class=" h6 d-inline">{{user.user.first_name}} </p></h5>
+    <h5>Last Name:  <p class=" h6 d-inline">{{user.user.last_name}} </p></h5>
+    <h5>Blood Type:  <p class=" h6 d-inline">{{user.blood}} </p></h5>
+    <h5>Phone number:  <p class=" h6 d-inline">{{user.phone}} </p></h5>
+    <h5>Address:  <p class=" h6 d-inline">{{user.address}} </p></h5>
+    <h5>Town:  <p class=" h6 d-inline">{{user.town}} </p></h5>
+    <h5>District:  <p class=" h6 d-inline">{{user.district}} </p></h5>
+    <h5>State:  <p class=" h6 d-inline">{{user.state}} </p></h5>
+</div>
+<br>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-xs-12">
+           <h4 class="text-center  mb-3">Your Notifications</h4>
+
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12 ">
+                        <h4 class="text-center  mb-3">Your Blood Requests</h4>
+
+            {% if requests %}
+
+            <div class="container-fluid border p-5">
+                 <div class="row h6">
+                    <div class="col">Patient Name</div>
+                    <div class="col">Blood Type</div>
+                    <div class="col">Due date</div>
+                    <div class="col">Active</div>
+                    <div class="col">Action</div>
+                 </div>
+                {% for request in requests %}
+                  <div class="row mb-3">
+                    <div class="col">{{request.patient_name}}</div>
+                    <div class="col">{{request.blood_type}}</div>
+                    <div class="col">{{request.target_date}}</div>
+                    <div class="col">
+                        {% if request.active %}
+                            <span class="text-success">YES</span>
+                        {% else %}
+                            <span class="text-danger">No</span>
+                        {% endif %}</div>
+                    <div class="col">
+                        <a href="{% url 'blood_request_delete' request.id %}" class="btn btn-sm btn-warning">
+                            Delete Request
+                        </a>
+
+                    </div>
+                 </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-secondary">You have made no request</div>
+            {% endif %}
+        </div>{% if requests %}
+            <div class="container-fluid  text-light bg-secondary">
+        Active bar will show YES if admin verified your request
+    </div>
+            {% endif %}
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock content%}

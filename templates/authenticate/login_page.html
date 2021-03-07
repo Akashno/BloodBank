@@ -1,0 +1,63 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+Login
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'authenticate/css/login_page.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container mt-1 p-5">
+     <div class="row  p-1 ">
+        <div class="col-md-4 col-lg-4  d-md-flex flex-column justify-content-center align-items-center   first-column  ">
+            <img class="image" src="https://blush.design/api/download?shareUri=txFABcqH2&c=Bottom_0%7Effa434_Hair_0%7E4a312c_Skin_0%7Eeac7a8_Top_0%7E393f82&bg=61892f&w=800&h=800&fm=png" alt="">
+        </div>
+        <div class="  col-md-8  p-1 second-column p-5  ">
+        <form action="" method="POST">
+        <h4 class="text-align text-center mb-4">Login </h4>
+        {% csrf_token %}
+    <!-- username-->
+    <div class="row mt-4">
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="username" class=" mb-1 form-group">Username</label>
+                <input class="form-control" type="text" name="username" id="username" placeholder="Enter your Username ">
+            </div>
+        </div>
+    </div>
+<!--            password-->
+   <div class="row mt-4">
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="password" class=" mb-1 form-group">Password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="Enter your password ">
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!--    submit button-->
+     <div class="row mt-4">
+        <div class="col-md-12 col-sm-12">
+            <input type="submit" value="Register"  class="btn btn-primary mt-2  btn-block w-100 ">
+        </div>
+    </div>
+
+            {% for message in messages %}
+
+            <div class="alert alert-danger text-center mt-2">{{message}}</div>
+            {% endfor %}
+            <div class="text-center mt-3"><a href="{% url 'register_user' %}" class=" text-reset">New donor/receiver? Register here</a></div>
+            <div class="text-center mt-2"><a href="{% url 'register_hospital' %}" class=" text-reset">Health Center Registration</a></div>
+            <div class="text-center mt-2"><a href="{% url 'index' %}" class=" text-reset">Go back to DashBoard</a></div>
+        </form>
+
+   </div>
+    </div>
+</div>
+
+{% endblock content%}

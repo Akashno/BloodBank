@@ -1,0 +1,52 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'hospital/main.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar ">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-items-center text-light h4">
+            <a class="text-decoration-none text-reset nav-btn btn " href="{% url 'hospital' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+             <a href="{% url 'request_blood' %}" class=" m-1 nav-btn btn rounded-pill " >
+               Request for Blood
+            </a>
+             <a href="{% url 'donor_list_view' %}" class=" m-1 nav-btn btn ">
+               Donors List
+            </a>
+             <a href="{% url 'blood_requests_view' %}" class=" m-1 nav-btn btn ">
+               View Blood Requests
+            </a>
+               <a href="{% url 'blood_stock' %}" class=" m-1 nav-btn btn ">
+               Blood Stock
+            </a>
+            <a href="{% url 'hospital_profile' %}" class=" m-1 nav-btn btn  ">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn  nav-btn  m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+<div class="container mt-5">
+    <div class="row justify-content-center h-75 d-flex align-items-center ">
+        <div class="col-md-6 col-sm-12 text-center ">
+            <h3 style="color:var(--hospital-color);"><b>Request for blood</b></h3>
+            <h6>Hospitals Can Request for blood and then we will notify every donor about this request</h6>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            {% include 'hospital/!request_blood_form.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

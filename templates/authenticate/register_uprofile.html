@@ -1,0 +1,108 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+Register
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'authenticate/css/register_uprofile.css' %}">
+
+{% endblock style%}
+
+{% block content%}
+<div class="container mt-1 p-5">
+     <div class="row  p-1 ">
+        <div class="col-md-4 col-lg-4  d-md-flex justify-content-center align-items-end   first-column  ">
+                        <img class="image" src="https://blush.design/api/download?shareUri=XRMUnT-9_&c=skin_0.3%7Ef6cbc3&bg=903e3c&w=800&h=800&fm=png" alt="">
+
+        </div>
+        <div class="  col-md-8  p-1 second-column p-5  ">
+    <form action="" method="POST">
+    <h4 class="text-align text-center mb-4">User Profile </h4>
+        {% csrf_token %}
+<!--    &lt;!&ndash;    Hospital username&ndash;&gt;-->
+<!--    <div class="row mt-4">-->
+<!--        <div class="col-md-12 col-sm-12">-->
+<!--            <div class="form-group">-->
+<!--                <label for="username" class=" mb-1 form-group">Hospital Username</label>-->
+<!--                <input class="form-control" type="text" name="username" id="username" placeholder="Enter hospital username ">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    Hospital Register number-->
+
+<!--    contact details-->
+    <div class="container">
+         <div class="row mt-2">
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="register-number" >Blood Group</label>
+                <select required name="blood" id="blood" class="form-control">
+
+                    <option value="">----</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="0-">O-</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+     <div class="row mt-4">
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="phone" class="  form-group">Contact Number</label>
+                <input required pattern="[7-9]{1}[0-9]{9}" placeholder="eg:9876543210" type="text" name="phone" id="phone" class="form-control">
+            </div>
+        </div>
+    </div>
+<!--        state-->
+        <div class="row mt-4">
+            <div class="col-md-12 col-sm-12">
+                 <div class="form-group">
+                     <label for="state" class="  form-group">Address</label>
+                     <textarea required pattern="[A-Za-z]*" class="form-control" name="address" id="address" cols="30" rows="5"></textarea>
+                 </div>
+            </div>
+        </div>
+<!--        district-->
+        <div class="row mt-4">
+            <div class="col-md-6 col-sm-12">
+                 <div class="form-group">
+                     <label for="town" class="  form-group">Town</label>
+                     <input required pattern="[A-Za-z]*" placeholder="town" type="text" name="town" id="town" class="form-control">
+                 </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                 <div class="form-group">
+                     <label for="district" class="  form-group">District</label>
+                     <input required pattern="[A-Za-z]*" placeholder="District" type="text" name="district" id="district" class="form-control">
+                 </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                 <div class="form-group">
+                     <label for="state" class=" form-group">State</label>
+                     <input required pattern="[A-Za-z]*" placeholder="State" type="text" name="state" id="state" class="form-control">
+                 </div>
+            </div>
+        </div>
+<!--        town-->
+
+    </div>
+<!--    submit button-->
+     <div class="row mt-4">
+        <div class="col-md-12 col-sm-12">
+            <input type="submit" value="Register"  class="btn btn-primary mt-2  btn-block w-100 ">
+        </div>
+    </div>
+        </form>
+   </div>
+    </div>
+</div>
+
+{% endblock content%}

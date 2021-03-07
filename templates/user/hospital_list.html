@@ -1,0 +1,68 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+Hospital List
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-items-center text-light h4">
+            <a class="text-decoration-none text-reset btn btn-secondary" href="{% url 'user' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+             <a href="{% url 'blood_requests' %}" class=" m-1 btn btn-secondary">
+                Blood Requests
+            </a>
+             <a href="{% url 'hospital_list' %}" class=" m-1 btn btn-dark  text-light rounded-pill">
+                Hospitals List
+            </a>
+            <a href="{% url 'user_profile' %}" class=" m-1 btn btn-secondary">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn btn-secondary m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+<div class="container mt-5">
+    <div class="row h5">
+        <div class="col-3">Hospital Name</div>
+        <div class="col-2">State</div>
+        <div class="col-2">District</div>
+        <div class="col-2">Town</div>
+        <div class="col-2">Phone Number</div>
+        <div class="col-1">Stock</div>
+    </div>
+    <hr>
+
+    {% for item in list %}
+    <div class="row mb-4">
+        <div class="col-3">{{item.hospital.first_name}}</div>
+        <div class="col-2">{{item.state}}</div>
+        <div class="col-2">{{item.district}}</div>
+        <div class="col-2">{{item.town}}</div>
+        <div class="col-2">{{item.phone}}</div>
+        <div class="col-1 ">
+            <a href="{% url 'blood_stock_view' item.hospital.id %}" class="">
+                <button class="btn btn-primary"   >
+                  view stock
+                 </button>
+            </a>
+        </div>
+    </div>
+
+
+
+    {% endfor %}
+
+
+</div>
+{% endblock content%}

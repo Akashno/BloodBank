@@ -1,0 +1,103 @@
+ <form action="" method="POST">
+     {% csrf_token %}
+        <div class="container mt-5">
+            <h3>Update blood stock</h3>
+            <div class="row d-none">
+                <label for="hospital">Select your hospital</label>
+                <div class="col">{{form.hospital}}</div>
+            </div>
+            <h2 class="text-center h4 mt-5">Whole Blood Stock</h2>
+            <div class="row">
+                <div class="col">
+                <label for="w_a_positve">A+</label>
+                    {{form.w_a_positive}}
+                </div>
+                <div class="col">
+                <label for="w_a_negative">A-</label>
+                    {{form.w_a_negative}}
+                </div>
+                <div class="col">
+                <label for="w_b_positive">B+</label>
+                    {{form.w_b_positive}}
+                </div>
+                <div class="col">
+                <label for="w_b_negative">B-</label>
+                    {{form.w_b_negative}}
+                </div>
+                <div class="col">
+                <label for="w_ab_positive">AB+</label>
+                    {{form.w_ab_positive}}
+                </div>
+                <div class="col">
+                <label for="w_ab_negative">AB-</label>
+                    {{form.w_ab_negative}}
+                </div>
+                <div class="col">
+                <label for="w_o_positive">O+</label>
+                    {{form.w_o_positive}}
+                </div>
+                <div class="col">
+                <label for="w_o_negative">O-</label>
+                    {{form.w_o_negative}}
+                </div>
+            </div>
+
+             <h2 class="text-center h4 mt-5"> Blood component Stock</h2>
+            <div class="row">
+                <div class="col">
+                <label for="b_a_positve">A+</label>
+                    {{form.b_a_positive}}
+                </div>
+                <div class="col">
+                <label for="b_a_negative">A-</label>
+                    {{form.b_a_negative}}
+                </div>
+                <div class="col">
+                <label for="b_b_positive">B+</label>
+                    {{form.b_b_positive}}
+                </div>
+                <div class="col">
+                <label for="b_b_negative">B-</label>
+                    {{form.b_b_negative}}
+                </div>
+                <div class="col">
+                <label for="b_ab_positive">AB+</label>
+                    {{form.b_ab_positive}}
+                </div>
+                <div class="col">
+                <label for="b_ab_negative">AB-</label>
+                    {{form.b_ab_negative}}
+                </div>
+                <div class="col">
+                <label for="b_o_positive">O+</label>
+                    {{form.b_o_positive}}
+                </div>
+                <div class="col">
+                <label for="b_o_negative">O-</label>
+                    {{form.b_o_negative}}
+                </div>
+            </div>
+
+            <div class="row mt-1">
+                <div class="col">
+                <label for="RDP">RDP</label>
+                    {{form.RDP}}
+                </div>
+                <div class="col">
+                <label for="SDP">SDP</label>
+                    {{form.SDP}}
+                </div>
+                <div class="col">
+                <label for="FFP">FFP</label>
+                    {{form.FFP}}
+                </div>
+                <div class="col">
+                <label for="CRYO">BCRYO</label>
+                    {{form.CRYO}}
+                </div>
+
+            </div>
+            <input type="submit" value="Update Stock" class="mt-5 btn btn-success w-100">
+        </div>
+
+    </form>

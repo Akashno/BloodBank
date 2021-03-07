@@ -1,0 +1,62 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+Welcome
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid rowOne p-3" style="">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 text"><h5>Life Stream</h5></div>
+        <div class="col-md-6 col-sm-12 d-flex justify-content-end">
+
+            <span class="m-1">
+               <a  class="btn btn-secondary " href="{% url 'login_page' %}">Login</a>
+           </span>
+
+<!--            <span class="m-1">-->
+<!--               <a  class="btn btn-secondary " href="{% url 'login_page' %}">Find Blood</a>-->
+<!--           </span>-->
+
+        </div>
+    </div>
+</div>
+<div class="container-fluid rowTwo text-light p-5" >
+    <div class="row">
+
+        <div class="col text-center p-3 dashboard m-1 ">
+            <a class="text-decoration-none text-reset" href="{% url 'register_user' %}">
+            <h1 class="fs-md-1 fs-sm-3">Donate Blood save life</h1>
+            <h6>One pint of blood can save a life</h6>
+                <p class="para">Register your account in Life Stream and be a part of Our community  </p>
+            </a>
+        </div>
+
+        <div class="col text-center p-3 dashboard m-1  ">
+            <a class="text-decoration-none text-reset" href="{% url 'register_user' %}">
+            <h1 class="fs-md-1 fs-sm-3">Need Blood ? </h1>
+            <h6>We are here to help you</h6>
+            <p class="w-100 text-center para " >We will help you with finding blood for your loved ones</p>
+
+            </a>
+        </div>
+    </div>
+     <div class="row">
+
+
+
+        <div class="col text-center p-3 dashboard m-1 ">
+            <a class="text-decoration-none text-reset" href="{% url 'register_hospital' %}">
+            <h1 class="fs-md-1 fs-sm-3">Health Center  </h1>
+            <h6>Join with us </h6>
+            </a>
+        </div>
+    </div>
+
+</div>
+{% endblock content%}

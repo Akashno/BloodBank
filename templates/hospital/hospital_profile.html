@@ -1,0 +1,94 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'hospital/main.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-items-center text-light h4">
+            <a class="text-decoration-none text-reset btn nav-btn" href="{% url 'hospital' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+              <a href="{% url 'request_blood' %}" class=" m-1 nav-btn btn " >
+               Request for  Blood
+            </a>
+             <a href="{% url 'donor_list_view' %}" class=" m-1 nav-btn btn ">
+               Donors List
+            </a>
+            <a href="{% url 'blood_requests_view' %}" class=" m-1 btn nav-btn">
+               View Blood Requests
+            </a>
+               <a href="{% url 'blood_stock' %}" class=" m-1 btn nav-btn">
+               Blood Stock
+            </a>
+            <a href="{% url 'hospital_profile' %}" class=" m-1 btn nav-btn rounded-pill  ">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn nav-btn m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+{% for message in messages %}
+<div class="alert" style="background-color:var(--hospital-alert-color);">
+    {{message}}
+</div>
+{% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="container mt-5 alert alert-secondary">
+                <h6 class="text-center">Hospital Details</h6>
+                <h5 class="w-100">Hospital Name:  <p class=" h6 d-inline  ">{{hospital.hospital.first_name}} </p></h5>
+                <h5>Register Number:  <p class=" h6 d-inline">{{hospital.register_number}} </p></h5>
+                <h5>Phone number:  <p class=" h6 d-inline">{{hospital.phone}} </p></h5>
+                <h5>Town:  <p class=" h6 d-inline">{{hospital.town}} </p></h5>
+                <h5>District:  <p class=" h6 d-inline">{{hospital.district}} </p></h5>
+                <h5>State:  <p class=" h6 d-inline">{{hospital.state}} </p></h5>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+
+            <div class="container mt-5 alert ">
+                <h5 class="text-center">{{request.user}}'s previous Blood Requests</h5>
+                {% if items %}
+                <div class="container">
+                    <div class="row text-center h6" style="color:var(--hospital-color)">
+                        <div class="col">Blood Type</div>
+                        <div class="col">Target Date</div>
+                        <div class="col">Active</div>
+                        <div class="col">Action</div>
+                    </div>
+                    {% for item in items %}
+                    <div class="row text-center">
+                        <div class="col">{{item.blood}}</div>
+                        <div class="col">{{item.target_date}}</div>
+                        <div class="col">
+                            {% if item.active %}
+                                <h6 class="text-success">YES</h6>
+                            {% else %}
+                                <h6 class="text-Danger">NO</h6>
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'request_blood_delete' item.id %}" class="btn btn-danger btn-sm">Cancel</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                {% else %}    <div class="alert alert-secondary">No previous Requests</div> {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

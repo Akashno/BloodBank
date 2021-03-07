@@ -1,0 +1,107 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+Register
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'authenticate/css/register_user.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container mt-md-5 mt-sm-3 ">
+    <div class="row  p-1 ">
+        <div class="col-md-4 col-lg-4  d-md-flex justify-content-center align-items-end   first-column">
+            <img class="image" src="https://blush.design/api/download?shareUri=XRMUnT-9_&c=skin_0.3%7Ef6cbc3&bg=903e3c&w=800&h=800&fm=png" alt="">
+        </div>
+        <div class=" col-md-8 p-1 second-column p-5  ">
+            <form action="" method="POST">
+
+    <h4 class="text-center">User Registration</h4>
+        {% csrf_token %}
+
+    <!--   Hospital username Name-->
+     <div class="row mt-4">
+        <div class="col">
+            <div class="form-group">
+                <label for="username" class=" mb-1 form-group">Username </label>
+                {{form.username}}
+
+            </div>
+        </div>
+
+    </div>
+<!--   First Name and second name -->
+     <div class="row mt-4">
+        <div class="col">
+            <div class="form-group">
+                <label for="first_name" class=" mb-1 form-group">First Name</label>
+
+                  {{form.first_name}}
+            </div>
+        </div>
+          <div class="col">
+            <div class="form-group">
+                <label for="last_name" class=" mb-1 form-group">Last Name</label>
+
+                  {{form.last_name}}
+            </div>
+        </div>
+
+    </div>
+
+<!--    emailid-->
+     <div class="row mt-4">
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="email" class=" mb-1 form-group">Email ID</label>
+                {{form.email}}
+            </div>
+        </div>
+    </div>
+
+<!--    password1 and password2-->
+     <div class="row mt-4">
+        <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+                <label for="password1" class=" mb-1 form-group">Password</label>
+                {{form.password1}}
+
+            </div>
+        </div>
+          <div class="col-md-6 col-sm-12 ">
+            <div class="form-group">
+                <label for="password2" class="mt-sm-4 mt-md-0 mb-1 form-group">Confirm Password</label>
+                {{form.password2}}
+
+            </div>
+        </div>
+    </div>
+   <div class="row mb-3">
+            <div class="rounded p-3">
+             {{form.errors.username }}
+             {{form.errors.password2 }}
+             {{form.errors.email }}
+             {{form.errors.first_name }}
+             {{form.errors.last_name }}
+             {{form.errors.password1 }}
+                </div>
+        </div>
+<!--    submit button-->
+     <div class="row mt-md-4 mt-sm-3">
+        <div class="col-md-12 col-sm-12">
+            <input type="submit" value="Next"  class="btn btn-primary mt-2  btn-block w-100 ">
+        </div>
+    </div>
+                <div class="text-center mt-3">
+                    <a href="{% url 'login_page' %}" class=" text-reset">Already Registered? Login here</a></div>
+            <div class="text-center mt-2"><a href="{% url 'index' %}" class=" text-reset">Go back to DashBoard</a></div>
+
+        </form>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content%}

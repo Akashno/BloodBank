@@ -1,0 +1,68 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'hospital/main.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar ">
+    <div class="row ">
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-sm-center  justify-content-md-start align-items-center text-light h4">
+            <a class="text-decoration-none text-reset nav-btn btn " href="{% url 'hospital' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-sm-center justify-content-md-end">
+              <a href="{% url 'request_blood' %}" class=" m-1 nav-btn btn " >
+               Request for Blood
+            </a>
+            <a href="{% url 'donor_list_view' %}" class=" m-1 nav-btn btn rounded-pill ">
+               Donors List
+            </a>
+             <a href="{% url 'blood_requests_view' %}" class=" m-1 nav-btn btn ">
+               View Blood Requests
+            </a>
+               <a href="{% url 'blood_stock' %}" class=" m-1 nav-btn btn ">
+               Blood Stock
+            </a>
+            <a href="{% url 'hospital_profile' %}" class=" m-1 nav-btn btn  ">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn  nav-btn  m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+<div class="container mt-5 d-sm-flex d-md-block">
+     <div class="row h6 border border-dark rounded text-center p-4  ">
+        <div class="col-sm-12 col-md-2">Donor Name</div>
+        <div class="col-sm-12 col-md-1">Blood Type</div>
+        <div class="col-sm-12 col-md-2">Phone</div>
+        <div class="col-sm-12 col-md-2">Address</div>
+        <div class="col-sm-12 col-md-1">Town</div>
+        <div class="col-sm-12 col-md-2">District</div>
+        <div class="col-sm-12 col-md-2">State</div>
+    </div>
+    {% for donor in donors %}
+
+    <div class="row border border-dark rounded text-center mb-2 p-4">
+        <div class="col-sm-12 col-md-2">{{donor.user.first_name}}</div>
+        <div class="col-sm-12 col-md-1">{{donor.blood}}</div>
+        <div class="col-sm-12 col-md-2">{{donor.phone}}</div>
+        <div class="col-sm-12 col-md-2">{{donor.address}}</div>
+        <div class="col-sm-12 col-md-1">{{donor.town}}</div>
+        <div class="col-sm-12 col-md-2">{{donor.district}}</div>
+        <div class="col-sm-12 col-md-2">{{donor.state}}</div>
+    </div>
+
+    {% endfor %}
+
+
+
+</div>
+
+{% endblock content%}

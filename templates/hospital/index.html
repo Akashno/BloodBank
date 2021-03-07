@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'hospital/main.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar ">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-items-center text-light h4">
+            <a class="text-decoration-none text-reset nav-btn btn rounded-pill" href="{% url 'hospital' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+            <a href="{% url 'request_blood' %}" class=" m-1 nav-btn btn " >
+               Request for  Blood
+            </a>
+             <a href="{% url 'donor_list_view' %}" class=" m-1 nav-btn btn ">
+               Donors List
+            </a>
+             <a href="{% url 'blood_requests_view' %}" class=" m-1 nav-btn btn ">
+               View Blood Requests
+            </a>
+               <a href="{% url 'blood_stock' %}" class=" m-1 nav-btn btn ">
+               Blood Stock
+            </a>
+            <a href="{% url 'hospital_profile' %}" class=" m-1 nav-btn btn  ">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn  nav-btn  m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+<div class="container-fluid mt-5 mb-5">
+
+    <h5 class="text-center" style="color:var(--hospital-color)">
+       You can find the blood requests on
+        <a href="{% url 'blood_requests_view'  %}" class="text-decoration-none text-reset"><kbd class="bg-secondary">Blood requests</kbd></a>
+        panel
+    </h5>
+    <h6 class="text-center mt-4" style="color:var(--hospital-color)">
+       Update your blood stocks in
+        <a href="{% url 'blood_stock'  %}" class="text-decoration-none text-reset"><kbd class="bg-secondary">Blood Stock</kbd></a>
+        panel
+    </h6>
+
+</div>
+<div class="  container-fluid d-flex justify-content-center align-items-end">
+
+    <img class="" src="https://image.freepik.com/free-vector/city-hospital-building_74855-6301.jpg" alt="">
+</div>
+{% endblock content%}

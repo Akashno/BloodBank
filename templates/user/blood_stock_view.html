@@ -1,0 +1,43 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-items-center text-light h4">
+            <a class="text-decoration-none text-reset btn btn-secondary" href="{% url 'user' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+             <a href="{% url 'blood_requests' %}" class=" m-1 btn btn-secondary">
+                Blood Requests
+            </a>
+               <a href="{% url 'hospital_list' %}" class=" m-1 btn btn-secondary">
+                Hospitals List
+            </a>
+            <a href="{% url 'user_profile' %}" class=" m-1 btn btn-secondary ">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn btn-secondary m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+{%  if stock  %}
+{% include 'user/!blood_stock_view.html' %}
+
+{%  else  %}
+<div class="alert alert-info">No stock available</div>
+{%  endif  %}
+
+
+
+{% endblock content%}

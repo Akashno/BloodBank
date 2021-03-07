@@ -1,0 +1,103 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block title%}
+index
+{% endblock title%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+{% endblock style%}
+
+{% block content%}
+<div class="container-fluid top-bar">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 p-2 d-flex align-items-center text-light h4">
+            <a class="text-decoration-none text-reset  btn btn-secondary" href="{% url 'user' %}">Welcome {{request.user}}</a></div>
+        <div class="col-md-6 col-sm-12 p-2 d-flex justify-content-end">
+             <a href="{% url 'blood_requests' %}" class=" m-1 btn btn-secondary rounded-pill">
+                Blood Requests
+            </a>
+               <a href="{% url 'hospital_list' %}" class=" m-1 btn btn-secondary">
+                Hospitals List
+            </a>
+            <a href="{% url 'user_profile' %}" class=" m-1 btn btn-secondary ">
+                Profile
+            </a>
+            <a href="{% url 'logout_page' %}" class="btn btn-secondary m-1">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--main container-->
+<div class="container-fluid mt-2">
+   <!--        Blood requests by users-->
+        <div class="col row d-flex justify-content-center    ">
+            <a href="#" class=" btn btn-secondary w-50 disabled " >
+                 Blood Requests By Other Users
+            </a>
+        </div>
+        {% if user_blood_requests %}
+       <div class="row h6 mt-4 text-center d-md-flex d-sm-block justify-content-sm-start " style="font-size:15px;">
+            <div class="col">Patient's Name</div>
+            <div class="col">Patient's Age</div>
+            <div class="col">Blood Type</div>
+            <div class="col">Quantity(Units)</div>
+            <div class="col">Hospital Name</div>
+            <div class="col">Hospital Location</div>
+            <div class="col">Patient Address</div>
+            <div class="col">Purpose</div>
+                       <div class="col">Target Date</div>
+
+            <div class="col">Date of Request</div>
+            <div class="col">Phone</div>
+       </div>
+    <hr>
+
+    {% for item in user_blood_requests %}
+        <div class="row  mt-4 text-center mb-2" style="font-size:15px;">
+            <div class="col">{{item.patient_name}}</div>
+            <div class="col">{{item.patient_age}}</div>
+            <div class="col">{{item.blood_type}}</div>
+            <div class="col">{{item.blood_units}}</div>
+            <div class="col">{{item.hospital_name}}</div>
+            <div class="col">{{item.hospital_location}}</div>
+            <div class="col">{{item.patient_address}}</div>
+            <div class="col">{{item.purpose}}</div>
+            <div class="col">{{item.target_date}}</div>
+            <div class="col">{{item.date_created}}</div>
+            <div class="col">{{item.phone}}</div>
+
+       </div>
+    {% endfor %}
+    {% else %} <div class="alert alert-secondary text-center mt-2">No Blood Requests by other users</div>  {% endif %}
+<!--blood requests by users end-->
+<!--        Blood requests by Other Hospitals -->
+        <div class="col row d-flex justify-content-center mt-4   ">
+            <a href="#" class=" btn btn-secondary w-50 disabled " >
+                 Blood Requests By  Hospitals
+            </a>
+        </div>
+        {% if hospital_blood_requests %}
+       <div class="row h6 mt-4 text-center" style="font-size:15px;">
+            <div class="col">Hospital Name</div>
+            <div class="col">Blood Type</div>
+           <div class="col">Target Date</div>
+            <div class="col">Date of Request</div>
+       </div>
+    <hr>
+
+    {% for hos in hospital_blood_requests %}
+        <div class="row  mt-4 text-center mb-2" style="font-size:15px;">
+            <div class="col">{{hos.hospital.first_name}}</div>
+            <div class="col">{{hos.blood}}</div>
+            <div class="col">{{hos.target_date}}</div>
+            <div class="col">{{hos.date_created}}</div>
+
+       </div>
+    {% endfor %}
+    {% else %} <div class="alert alert-secondary text-center mt-2">No Blood Requests by Hospitals</div>  {% endif %}
+<!--blood requests by hospital end-->
+</div>
+{% endblock content%}

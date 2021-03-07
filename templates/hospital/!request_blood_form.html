@@ -1,0 +1,35 @@
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col">
+                <label for="blood">Blood Type</label>
+                <select  required class="form-control" name="blood" id="blood">
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="target-date">When do you need blood</label>
+                <input required class="form-control" min="{{date}}" type="date" name="target-date" id="target-date">
+            </div>
+             <div class="col">
+                 <label for="phone">Contact Number</label>
+                 <input  pattern="[7-9]{1}[0-9]{9}" placeholder="eg: 9876543210" required class="form-control" type="tel" name="phone" id="phone">
+             </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Place Request" class="btn nav-btn w-100 mt-3">
+            </div>
+        </div>
+
+    </div>
+</form>
