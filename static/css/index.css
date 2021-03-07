@@ -1,3 +1,14 @@
+     :root{
+    --main-color:#474B4F;
+    --secondary-color:#222629;
+    --main-text:#61892F;
+    --secondary-text:#86C232;
+    --user-color:#903E3C;
+    --user-alert-color:#C59691;
+    --hospital-alert-color:#78BBAB;
+    --hospital-color:#3AAD92;
+}
+
 .rowOne {
 background-color:var(--main-color)
 }
