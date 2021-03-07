@@ -1,0 +1,24 @@
+.rowOne {
+background-color:var(--main-color)
+}
+.rowTwo{
+        background-color:#F7F7F7;
+        height:100vh;
+}
+h5{
+    color:white;
+}
+
+.dashboard{
+
+    border-radius:10px;
+    background-color:var(--main-color);
+}
+.dashboard:hover{
+    background-color:grey;
+
+}
+
+.para{
+    color:white;
+}

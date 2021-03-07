@@ -15,7 +15,7 @@ from django.shortcuts import render, redirect
 from authenticate.models import HospitalProfile
 
 
-def index(request):
+def indexout(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
             return redirect('admin_page')
@@ -25,7 +25,7 @@ def index(request):
         else:
             return redirect('user')
     context = {}
-    return render(request, 'user/index.html',context)
+    return render(request, 'user/indexout.html',context)
 
 @login_required(login_url='login_page')
 @user_view

@@ -1,0 +1,11 @@
+.first-column{
+background-color:#3AAD92;
+}
+.second-column{
+background-color:#F7F7F7;
+}
+.first-column .image{
+width:200px;
+object-fit:contain;
+
+}
