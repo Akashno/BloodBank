@@ -9,4 +9,5 @@ hospitals can update their blood stocks
 
 and users can view that stock details
 
-![result](https://user-images.githubusercontent.com/52347258/111102401-06b19780-8572-11eb-8794-abe766c35062.gif)
+![image](https://user-images.githubusercontent.com/52347258/111102457-25b02980-8572-11eb-8af9-5b3f6ecd343a.png)
+
